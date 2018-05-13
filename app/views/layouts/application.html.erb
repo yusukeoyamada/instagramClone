@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>InstagramClone</title>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#gnavi">
+            <span class="sr-only">Blog</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">InstagramClone</a>
+        </div>
+        <div id="gnavi" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/pictures">投稿一覧</a></li>
+            <li><a href="/pictures/new">新規投稿</a></li>
+            <li><a href="/contacts/new">お問い合わせ</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <% if logged_in? %>
+              <li class="login_tag"><%= link_to 'Profile', user_path(current_user.id) %></li>
+              <li class="login_tag"><%= link_to 'Logout', session_path(current_user.id), method: :delete %></li>
+            <% else %>
+              <li class="login_tag"><%= link_to "Sign up", new_user_path %></li>
+              <li class="login_tag"><%= link_to "Login", new_session_path %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: "#{key}") %>
+    <% end %>
+
+    <%= yield %>
+
+    <footer>
+      <p>2018年3月期生</p>
+      <p>小山田湧亮</p>
+    </footer>
+  </body>
+</html>

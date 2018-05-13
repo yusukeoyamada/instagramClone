@@ -1,0 +1,33 @@
+<h4 class="user_infomation"><%= @user.name %>のページ</h4>
+<p class="user_infomation_image">
+  <%= image_tag @user.icon_image %>
+</p>
+<p class="user_infomation">メールアドレス: <%= @user.email %></p>
+<p class="user_infomation">
+  <%= link_to 'ユーザー情報を編集', edit_user_path(@user.id), class: 'btn btn-warning' %>
+</p>
+
+<h1>お気に入り投稿一覧</h1>
+
+<table>
+  <tr>
+    <th class="index_favorite_blog_user_name">投稿者名</th>
+    <th class="index_favorite_blog_title">タイトル</th>
+    <th class="index_favorite_blog_content">内容</th>
+    <th class="index_favorite_blog_content">image</th>
+  </tr>
+
+<% if !@favorites_blogs.nil? %>
+  <% @favorites_blogs.each do |favorites_blog| %>
+    <tr>
+      <td class="index_favorite_blog"><%= favorites_blog.user.name %></td>
+      <td class="index_favorite_blog"><%= favorites_blog.title %></td>
+      <td class="index_favorite_blog"><%= favorites_blog.content %></td>
+      <td class="index_favorite_blog_image">
+        <%= image_tag favorites_blog.image %>
+      </td>
+    </tr>
+  <% end %>
+<% end %>
+
+</table>

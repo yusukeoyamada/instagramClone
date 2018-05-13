@@ -1,0 +1,17 @@
+<h1>投稿一覧</h1>
+
+<table>
+  <tr>
+    <th class="index_picture_user_name">投稿者名</th>
+    <th class="index_picture_title">タイトル</th>
+  </tr>
+
+<% @pictures.each do |picture| %>
+  <tr>
+    <td class="index_picture"><%= picture.user.name%></td>
+    <td class="index_picture"><%= link_to picture.title , picture_path(picture.id), class: 'btn btn-info' %></td>
+  </tr>
+<% end %>
+</table>
+<br>
+<%= link_to '投稿する', new_picture_path %>

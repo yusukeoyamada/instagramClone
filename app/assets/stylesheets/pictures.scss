@@ -1,0 +1,39 @@
+.index_picture {
+  padding: 5px;
+  border: solid 3px #2c3e50;
+}
+
+.index_picture_title, .index_picture_user_name{
+  padding: 5px;
+}
+
+.picture_title, .picture_content, .picture_image,
+.show_picture_edit, .show_picture_edit, .show_picture_user_name,
+.show_picture_title, .show_picture_image{
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.show_picture_edit{
+  display: inline-block;
+}
+
+.show_picture_delete{
+  display: inline-block;
+}
+
+.picture_image_lable{
+  display: block;
+}
+
+.picture_image_input{
+  display: inline-block;
+  padding-left: 6rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.error_message{
+  margin-left: auto;
+  margin-right: auto;
+}

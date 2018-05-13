@@ -1,0 +1,28 @@
+<h1>投稿詳細画面</h1>
+
+<p class="show_picture_user_name">投稿者名: <%= @picture.user.name %></p>
+<p class="show_picture_image">
+  <%= image_tag @picture.image %>
+</p>
+<p class="show_picture_title">タイトル: <%= @picture.title %></p>
+<p class="show_picture_content">内容: <%= @picture.content %></p>
+<% if @picture.user == current_user %>
+  <p class="show_picture_edit"><%= link_to '編集', edit_picture_path(@picture.id), class: 'btn btn-warning' %></p>
+  <p class="show_picture_delete"><%= link_to '削除', picture_path(@picture.id), method: :delete, data: { confirm: '本当に削除していいですか？' } , class: 'btn btn-danger'%></p>
+<% end %>
+
+<% unless @picture.user == current_user %>
+  <% if @favorite.present? %>
+    <div class="favorites_cancelled">
+      <%= link_to 'お気に入り解除する', favorite_path(picture_id: @picture.id), method: :delete, class: 'btn btn-danger' %>
+    </div>
+  <% else %>
+    <div class="favorites">
+      <%= link_to 'お気に入りする', favorites_path(picture_id: @picture.id), method: :post, class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+<% end %>
+
+<br>
+
+<%= link_to "投稿一覧画面にもどる", pictures_path %>
