@@ -1,9 +1,10 @@
 class NoticeMailer < ApplicationMailer
 
-  def send_mail_picture(picture, email)
+  def notice_mailer(picture)
     @picture = picture
+    @picture_user_email = @picture.user.email
 
-    mail to: email, subject: "投稿の確認メール"
+    mail to: @picture_user_email, subject: "投稿の確認メール"
   end
 
 end

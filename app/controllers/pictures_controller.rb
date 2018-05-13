@@ -44,7 +44,7 @@ class PicturesController < ApplicationController
     @picture.image.retrieve_from_cache!  params[:cache][:image]
     if @picture.save
       redirect_to pictures_path, notice: "投稿しました！"
-      NoticeMailer.send_mail_picture(@picture, @picture.user.email).deliver
+      NoticeMailer.notice_mailer(@picture).deliver
     else
       render 'new'
     end
