@@ -1,48 +1,47 @@
+<div class="container">
+
 <h1>Sign up</h1>
 
-  <%= form_with(model: @user, local: true, url:confirm_users_path) do |form| %>
-
-    <div class="container">
-      <% if @user.errors.any? %>
-        <div id="error_explanation">
-          <h2 class="alert alert-warning" role="alert"><%= pluralize(@user.errors.count, "error") %> prohibited this @user from being saved:</h2>
-          <ul>
-          <% @user.errors.full_messages.each do |message| %>
-            <li class="alert alert-warning" role="alert"><%= message %></li>
-          <% end %>
-          </ul>
-        </div>
+<%= form_with(model: @user, local: true, url:confirm_users_path) do |form| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2 class="alert alert-warning" role="alert"><%= pluralize(@user.errors.count, "error") %> prohibited this @user from being saved:</h2>
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li class="alert alert-warning" role="alert"><%= message %></li>
       <% end %>
-
-      <div class="user_name">
-        <%= form.label :name %>
-        <%= form.text_field :name %>
-      </div>
-
-      <div class="user_email">
-        <%= form.label :email %>
-        <%= form.email_field :email %>
-      </div>
-
-      <div class="user_password">
-        <%= form.label :password %>
-        <%= form.password_field :password %>
-      </div>
-
-      <div class="user_password_confirmation">
-        <%= form.label :password_confirmation %>
-        <%= form.password_field :password_confirmation %>
-      </div>
-
-      <div class="new_icon">
-        <p class="new_icon_lable"><%= form.label :icon_image %></p>
-        <p class="new_icon_image"><%= form.file_field :icon_image, id: :@user_icon_image %></p>
-        <%= image_tag(@user.icon_image.url) if @user.icon_image.url %>
-        <%= form.hidden_field :icon_image_cache %>
-      </div>
-
-      <%= form.submit "Create my account" %>
-
+      </ul>
     </div>
+  <% end %>
+
+  <div class="user_name">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="user_email">
+    <%= form.label :email %>
+    <%= form.email_field :email %>
+  </div>
+
+  <div class="user_password">
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+  </div>
+
+  <div class="user_password_confirmation">
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation %>
+  </div>
+
+  <div class="new_icon">
+    <p class="new_icon_lable"><%= form.label :icon_image %></p>
+    <p class="new_icon_image"><%= form.file_field :icon_image, id: :@user_icon_image %></p>
+    <%= image_tag(@user.icon_image.url) if @user.icon_image.url %>
+    <%= form.hidden_field :icon_image_cache %>
+  </div>
+
+  <%= form.submit "Create my account" %>
 
 <% end %>
+</div>

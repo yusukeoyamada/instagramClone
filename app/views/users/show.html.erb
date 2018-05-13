@@ -1,13 +1,14 @@
-<div class="container">
-  <h4 class="user_infomation"><%= @user.name %>のページ</h4>
-  <p class="user_infomation_image">
-    <%= image_tag @user.icon_image %>
-  </p>
-  <p class="user_infomation">メールアドレス: <%= @user.email %></p>
-  <p class="user_infomation">
-    <%= link_to 'ユーザー情報を編集', edit_user_path(@user.id), class: 'btn btn-warning' %>
-  </p>
 
+<h4 class="user_infomation"><%= @user.name %>のページ</h4>
+<p class="user_infomation_image">
+  <%= image_tag @user.icon_image %>
+</p>
+<p class="user_infomation">メールアドレス: <%= @user.email %></p>
+<p class="user_infomation">
+  <%= link_to 'ユーザー情報を編集', edit_user_path(@user.id), class: 'btn btn-warning' %>
+</p>
+
+<div class="container">
   <h1>お気に入り投稿一覧</h1>
 
   <table>
